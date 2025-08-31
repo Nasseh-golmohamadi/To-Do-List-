@@ -1,13 +1,18 @@
 import React from 'react'
 
 
-const Todos = ({value}) => {
-    console.log({value});
-    
+const Todos = ({ todos, setTodos }) => {
+
     return (
-        <div className='border border-2 border-line flex items-center justify-center'>
-            {value}
-        </div>
+        <ul>
+            {
+            todos.map(todo => (
+                <li key={todo.id} className='border border-2 border-line flex items-center justify-center'>
+                    {todo.name}
+                </li>
+            ))
+        }
+        </ul>
     )
 }
 
