@@ -5,7 +5,10 @@ import Todos from './components/Todos'
 
 
 function App() {
-const [todos , setTodos]=useState([]);
+const [todos , setTodos]=useState(
+  JSON.parse(localStorage.getItem("todos")) || []
+ );
+
   return (
     <>
       <Home todos={todos} setTodos={setTodos} />

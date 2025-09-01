@@ -5,7 +5,8 @@ const InputBar = (props) => {
     const setTodos = props.setTodos;
 
     const [inputValue,setInputvalue]=useState("");
-    
+
+
   
     function handleSubmit(e){
         e.preventDefault();
@@ -22,6 +23,8 @@ const InputBar = (props) => {
 
     }
     
+    localStorage.setItem("todos", JSON.stringify(todos));
+
   return (
     <>
     <div className='input-part flex items-center justify-center'>
