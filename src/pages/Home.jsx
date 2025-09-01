@@ -5,8 +5,7 @@ import InputBar from '../components/InputBar'
 const Home = (props) => {
   const todos = props.todos;
   const setTodos = props.setTodos;
-
-  console.log("st"+JSON.stringify(todos));
+  
   
   return (
     <div className="flex items-center justify-center black-500">

@@ -8,6 +8,7 @@ function App() {
 const [todos , setTodos]=useState(
   JSON.parse(localStorage.getItem("todos")) || []
  );
+ 
 
   return (
     <>
