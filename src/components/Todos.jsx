@@ -5,10 +5,8 @@ const Todos = ({ todos, setTodos }) => {
 
     const [updateEdit, SetUpdateEdit] = useState(null);
     const [edited, setEdited] = useState("");
-    const [isDone , setIsDone]=useState(false);
+    const [isDone, setIsDone] = useState(false);
 
-    console.log(isDone);
-    
     function handleDelete(id) {
         setTodos(todos.filter(todo => todo.id !== id));
     }
@@ -28,6 +26,22 @@ const Todos = ({ todos, setTodos }) => {
         SetUpdateEdit(null);
     }
 
+    function handleCheck(id) {
+        setTodos(
+            todos.map((obj)=>
+                obj.id == id ? {...obj , checked:!obj.checked} : obj 
+            )
+        )
+
+        // const selectedObj = todos.find((element) => {
+        //     return element.id === id
+        // })
+        // selectedObj.checked=!selectedObj.checked
+        // setTodos([...todos])
+        // console.log(todos);
+        
+    }
+
     return (
         <ul>
             {
@@ -44,10 +58,12 @@ const Todos = ({ todos, setTodos }) => {
                                 <>
                                     <input
                                         type="checkbox"
-                                        checked={isDone}
-                                        onChange={()=> setIsDone(!isDone)}
+                                        checked={todo.checked}
+                                        onChange={() => handleCheck(todo.id)}
                                     />
-                                    {todo.name}
+                                    <div className={todo.checked ? "line-through text-black-500" : ""}>
+                                        {todo.name}
+                                    </div>
                                     <botton onClick={() => handleDelete(todo.id)}>Delete</botton>
                                     <botton onClick={() => handleEdit(todo.id)}>Edit</botton>
                                 </>
